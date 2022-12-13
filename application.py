@@ -13,6 +13,8 @@ class Device():
 
 base_url = 'https://app.torizon.io/api/v2beta/'
 
+log_file = '/tmp/tps-backend_log.tmp'
+
 application = Flask(__name__)
 CORS(application)
 
@@ -36,7 +38,8 @@ def getAllDevices():
     url = base_url + 'devices/core'
     response = requests.get(url, params=params, headers=headers)
     json_response = response.json()
-    print(json_response)
+    with open(log_file, 'a') as f:
+        f.write(json_response + '\n')
     for device in json_response['values']:
       total_devices.append(Device(device['deviceName'], device['deviceId'], device['lastSeen'], device['createdAt'])) 
     return json_response
@@ -44,7 +47,7 @@ def getAllDevices():
 def addDevice():
     headers = {'Authorization' : 'Bearer ' + OAuth2Token}
     url = base_url + 'devices/core'
-    
+
     response = requests.post(url, json={'deviceId': 'device1', 'deviceName': 'mabdevice'}, headers=headers)
     print("response = " + response.text)
     with open("provision.zip", "wb") as f:
