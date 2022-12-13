@@ -39,7 +39,7 @@ def getAllDevices():
     response = requests.get(url, params=params, headers=headers)
     json_response = response.json()
     with open(log_file, 'a') as f:
-        f.write(json_response + '\n')
+        f.write(str(json_response) + '\n')
     for device in json_response['values']:
       total_devices.append(Device(device['deviceName'], device['deviceId'], device['lastSeen'], device['createdAt'])) 
     return json_response
