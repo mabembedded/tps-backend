@@ -56,6 +56,7 @@ def addDevice():
 @application.route('/get-auth', methods=["GET"])
 def get_auth():
     getOAuth2Token()
+    return Response("{'a':'b'}", status=201, mimetype='application/json')
 
 @application.route('/num-devices', methods=["GET"])
 def num_devices():
