@@ -61,4 +61,4 @@ if __name__ == "__main__":
     # Get all devices
     getAllDevices()
     application.debug = True
-    application.run("0.0.0.0")
+    application.run("0.0.0.0:8000")
