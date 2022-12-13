@@ -13,8 +13,8 @@ class Device():
 
 base_url = 'https://app.torizon.io/api/v2beta/'
 
-app = Flask(__name__)
-CORS(app)
+application = Flask(__name__)
+CORS(application)
 
 OAuth2Token = ""
 def getOAuth2Token():
@@ -60,5 +60,5 @@ if __name__ == "__main__":
 
     # Get all devices
     getAllDevices()
-
-    app.run("0.0.0.0", 5000)
+    application.debug = True
+    application.run()
