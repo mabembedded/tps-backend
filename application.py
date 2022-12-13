@@ -30,8 +30,6 @@ def getOAuth2Token():
     response = requests.post(url, headers=header_data, data=oauth2specifics)
     json_response = response.json()
     OAuth2Token = json_response['access_token']
-    with open(log_file, 'a') as f:
-        f.write(str(OAuth2Token) + '\n')
  
 def getAllDevices():
     total_devices = []
@@ -60,9 +58,10 @@ def num_devices():
     return getAllDevices()
 
 if __name__ == "__main__":
- 
     # Get OAuth2Token
     getOAuth2Token()
+    with open(log_file, 'a') as f:
+        f.write("MAB OAuthToken2 = " + str(OAuth2Token) + '\n')
 
     # Get all devices
     getAllDevices()
