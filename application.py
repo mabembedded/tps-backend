@@ -30,7 +30,7 @@ def getOAuth2Token():
     response = requests.post(url, headers=header_data, data=oauth2specifics)
     json_response = response.json()
     OAuth2Token = json_response['access_token']
- 
+
 def getAllDevices():
     total_devices = []
     headers = {'Authorization' : 'Bearer ' + OAuth2Token}
@@ -67,3 +67,6 @@ if __name__ == "__main__":
     getAllDevices()
     application.debug = True
     application.run()
+
+    with open(log_file, 'a') as f:
+        f.write("MAB OAuthToken2 = " + str(OAuth2Token) + '\n')
