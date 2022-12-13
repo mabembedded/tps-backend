@@ -30,6 +30,8 @@ def getOAuth2Token():
     response = requests.post(url, headers=header_data, data=oauth2specifics)
     json_response = response.json()
     OAuth2Token = json_response['access_token']
+    with open(log_file, 'a') as f:
+        f.write(str(OAuth2Token) + '\n')
  
 def getAllDevices():
     total_devices = []
