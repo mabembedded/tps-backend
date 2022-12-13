@@ -53,20 +53,13 @@ def addDevice():
     with open("provision.zip", "wb") as f:
       f.write(response.content)
 
+@application.route('/get-auth', methods=["GET"])
+    getOAuth2Token()
+
 @application.route('/num-devices', methods=["GET"])
 def num_devices():
     return getAllDevices()
 
 if __name__ == "__main__":
-    # Get OAuth2Token
-    getOAuth2Token()
-    with open(log_file, 'a') as f:
-        f.write("MAB OAuthToken2 = " + str(OAuth2Token) + '\n')
-
-    # Get all devices
-    getAllDevices()
     application.debug = True
     application.run()
-
-    with open(log_file, 'a') as f:
-        f.write("MAB OAuthToken2 = " + str(OAuth2Token) + '\n')
