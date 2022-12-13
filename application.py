@@ -49,7 +49,7 @@ def addDevice():
     with open("provision.zip", "wb") as f:
       f.write(response.content)
 
-@app.route('/num-devices', methods=["GET"])
+@application.route('/num-devices', methods=["GET"])
 def num_devices():
     return getAllDevices()
 
