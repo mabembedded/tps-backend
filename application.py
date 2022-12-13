@@ -13,7 +13,7 @@ class Device():
 
 base_url = 'https://app.torizon.io/api/v2beta/'
 
-log_file = '/tmp/tps-backend_log.tmp'
+log_file = 'tps-backend.log'
 
 application = Flask(__name__)
 CORS(application)
