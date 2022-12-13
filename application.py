@@ -54,6 +54,7 @@ def addDevice():
       f.write(response.content)
 
 @application.route('/get-auth', methods=["GET"])
+def get_auth():
     getOAuth2Token()
 
 @application.route('/num-devices', methods=["GET"])
