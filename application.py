@@ -36,6 +36,7 @@ def getAllDevices():
     url = base_url + 'devices/core'
     response = requests.get(url, params=params, headers=headers)
     json_response = response.json()
+    print(json_response)
     for device in json_response['values']:
       total_devices.append(Device(device['deviceName'], device['deviceId'], device['lastSeen'], device['createdAt'])) 
     return json_response
